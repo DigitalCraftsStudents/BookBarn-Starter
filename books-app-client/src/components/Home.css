@@ -1,0 +1,35 @@
+
+.books {
+    display: flex; 
+    list-style: none; 
+}
+
+.book {
+    display: flex; 
+    flex-direction: column;
+    padding: 20px; 
+    align-items: center;
+}
+
+.book label {
+    font-size: 18px; 
+    margin-top: 15px; 
+}
+
+.book button {
+    background-color:red; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.book img {
+    width: 75%; 
+    height: 75%;
+}
