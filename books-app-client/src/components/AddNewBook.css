@@ -1,0 +1,30 @@
+
+#container {
+    margin: 20px;
+    padding: 20px;  
+    min-width: 200px; 
+    width: 20%; 
+    display: flex; 
+    flex-direction: column;
+}
+
+#container input {
+    margin: 10px; 
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#container button {
+    background-color:green; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

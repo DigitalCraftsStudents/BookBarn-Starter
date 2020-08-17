@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from './components/Home'
 import BaseLayout from './components/BaseLayout';
+import AddNewBook from './components/AddNewBook';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +13,7 @@ ReactDOM.render(
       <Switch>
         <BaseLayout>
           <Route path= '/' component = {Home} exact /> 
+          <Route path= '/add-book' component = {AddNewBook} exact /> 
         </BaseLayout>
       </Switch>
     </BrowserRouter>
