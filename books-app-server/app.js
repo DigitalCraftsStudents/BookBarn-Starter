@@ -3,6 +3,10 @@ const app = express()
 const cors = require('cors')
 const booksRouter = require('./routes/books')
 
+books = [] 
+
+// add body parser to the middleware
+app.use(express.json())
 // add cors to the middleware 
 app.use(cors())
 // add books router to the middleware 
