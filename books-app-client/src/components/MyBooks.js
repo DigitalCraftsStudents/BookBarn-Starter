@@ -50,7 +50,7 @@ function MyBooks() {
         return <li key = {book.id} className='book'>
                 <img src={book.imageURL} />
                 <label>{book.title}</label>
-                <button onClick={() => handleBookDelete(book.id)}>Delete</button>
+                <button className='delete-book-button' onClick={() => handleBookDelete(book.id)}>Delete</button>
             </li>
     })
 

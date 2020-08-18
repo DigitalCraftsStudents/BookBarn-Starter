@@ -1,6 +1,7 @@
 
 const initialState = {
-    isAuthenticated: false 
+    isAuthenticated: true, 
+    cartItems: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 isAuthenticated: false 
+            }
+        case 'ON_BOOK_ADDED_TO_CART': 
+            return {
+                ...state, 
+                cartItems: state.cartItems.concat(action.payload)
             }
     }
 

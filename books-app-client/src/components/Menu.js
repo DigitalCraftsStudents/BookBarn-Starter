@@ -15,13 +15,16 @@ function Menu(props) {
             { props.isAuth ? <NavLink to = '/my-books'>My Books</NavLink> : null }
             { props.isAuth ?  <NavLink to = '/add-book'>Add New Book</NavLink> : null }
             { props.isAuth ?  <NavLink to = '/logout'>Logout</NavLink> : null }
+
+            { props.isAuth ?  <NavLink to = '/cart'>Cart({props.cartItems.length})</NavLink> : null }
         </div>
     )
 }
-
+  
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.isAuthenticated 
+        isAuth: state.isAuthenticated, 
+        cartItems: state.cartItems 
     }
 }
 

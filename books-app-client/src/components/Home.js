@@ -1,8 +1,9 @@
 
 import React, {useState, useEffect} from 'react'
+import { connect } from 'react-redux'
 
 // this component displays all the books added to the catalog 
-function Home() {
+function Home(props) {
 
     const [books, setBooks] = useState([])
 
@@ -32,25 +33,15 @@ function Home() {
         return response.json() 
     }
 
-    const handleBookDelete = (bookId) => {
-
-        // use the book Id to delete the book 
-        deleteBookById(bookId)
-        .then(result => {
-            console.log(result)
-            if(result.success) {
-                // refresh all the books 
-                populateBooks() 
-            }
-        })
-
+    const handleAddToCart = (book) => {
+        props.onBookAddedToCart(book)
     }
 
     const bookItems = books.map(book => {
         return <li key = {book.id} className='book'>
                 <img src={book.imageURL} />
                 <label>{book.title}</label>
-                <button onClick={() => handleBookDelete(book.id)}>Delete</button>
+                {props.isAuth ?  <button className='add-to-cart-button' onClick={() => handleAddToCart(book)}>Add To Cart</button> : null }
             </li>
     })
 
@@ -62,4 +53,16 @@ function Home() {
 
 }
 
-export default Home 
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.isAuthenticated 
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onBookAddedToCart: (book) => dispatch({type: 'ON_BOOK_ADDED_TO_CART', payload: book})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
