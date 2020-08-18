@@ -1,8 +1,8 @@
 
 import React, {useState, useEffect} from 'react'
+import './MyBooks.css';
 
-// this component displays all the books added to the catalog 
-function Home() {
+function MyBooks() {
 
     const [books, setBooks] = useState([])
 
@@ -62,4 +62,4 @@ function Home() {
 
 }
 
-export default Home 
+export default MyBooks 
