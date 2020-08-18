@@ -7,6 +7,8 @@ function Menu() {
     return (
         <div id="menu">
             <NavLink to = '/'>Home</NavLink>
+            <NavLink to = '/'>Register</NavLink>
+            <NavLink to = '/login'>Login</NavLink>
             <NavLink to = '/add-book'>Add New Book</NavLink>
         </div>
     )

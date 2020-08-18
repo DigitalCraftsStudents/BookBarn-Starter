@@ -2,6 +2,8 @@ const express = require('express')
 const app = express() 
 const cors = require('cors')
 const booksRouter = require('./routes/books')
+const indexRouter = require('./routes/index')
+
 const { v4: uuidv4 } = require('uuid');
 
 // books array using as the database 
@@ -39,6 +41,8 @@ app.use(express.json())
 app.use(cors())
 // add books router to the middleware 
 app.use('/api/books',booksRouter)
+// add index router to the middleware 
+app.use('/api/',indexRouter)
 
 // configure the dotenv 
 require('dotenv').config() 

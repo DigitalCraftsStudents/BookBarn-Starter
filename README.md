@@ -16,3 +16,15 @@ or ``` node app.js ```
 
 ### Notes 
 1. This app uses ```"sequelize": "^5.22.3"``` 
+
+### Solution for the following features: 
+
+ 1. Add the ability for the user to add books to their cart. The items count should be stored in Redux global state  
+
+2. User should be able to see the cart count in all of the pages. Display the cart count on the upper right hand corner of the page 
+
+3. Allow the user to register for a new account 
+
+4. Allow the user to login. After successful login, update the isAuthenticated global state to true. 
+
+5. Toggle the menu options depending on the user logged in status. The isAuthenticated flag can be stored in Redux global state. 

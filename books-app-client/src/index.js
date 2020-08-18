@@ -6,13 +6,16 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from './components/Home'
 import BaseLayout from './components/BaseLayout';
 import AddNewBook from './components/AddNewBook';
+import Register from './components/Register'
+import Login from './components/Login'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
         <BaseLayout>
-          <Route path= '/' component = {Home} exact /> 
+          <Route path= '/' component = {Register} exact /> 
+          <Route path= '/login' component = {Login} exact />
           <Route path= '/add-book' component = {AddNewBook} exact /> 
         </BaseLayout>
       </Switch>
