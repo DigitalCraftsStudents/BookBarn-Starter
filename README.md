@@ -13,3 +13,6 @@
 ```nodemon app.js ```
 or ``` node app.js ```
 2. Go to the **books-app-client** folder and run ```npm start```
+
+### Notes 
+1. This app uses ```"sequelize": "^5.22.3"``` 
