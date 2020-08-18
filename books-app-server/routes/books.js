@@ -1,28 +1,35 @@
 
 const express = require('express')
 const router = express.Router()
-const { v4: uuidv4 } = require('uuid');
+const models = require('../models')
 
 // GET api/books
 router.get('/', (req, res) => {
-    res.json(global.books)
+    models.Book.findAll().then(books => res.json(books))
 })
 
 // GET api/books/:id 
 router.get('/:id', (req, res) => {
 
-    const bookId = req.params.id
+    const bookId = parseInt(req.params.id) 
+
     if (!bookId) {
         res.json('id is required')
         return
     }
 
-    const book = global.books.find(book => book.id == bookId)
-    if (book) {
-        res.json(book)
-    } else {
-        res.json({ error: 'Book not found!' })
-    }
+    models.Book.findByPk(bookId)
+    .then(book => {
+        if(book) {
+            res.json(book)
+        } else {
+            res.json({message: `Book with id ${bookId} not found`})
+        }
+    }).catch((error) => {
+        res.json(error)
+    })
+
+   
 })
 
 // DELETE /api/books
@@ -33,29 +40,38 @@ router.delete('/:id', (req, res) => {
         res.json('id is required')
         return
     }
-    // filter out the book with the suplied id 
-    global.books = global.books.filter(book => book.id != bookId)
 
-    res.json({success: true})
+    models.Book.destroy({
+        where: {
+            id: bookId
+        }
+    }).then((bookDeleted) => {
+        if(bookDeleted == 1) {
+            res.json({success: true, message: 'Book has been deleted'})
+        } else {
+            res.json({success: false, message: 'Unable to delete the book'})
+        }
+    }).catch((error) => {
+        res.json(error)
+    })
+
 })
 
 // POST api/books
 router.post('/', (req, res) => {
 
-    const title = req.body.title
-    const genre = req.body.genre
-    const publisher = req.body.publisher
-    const year = req.body.year
-    const imageURL = req.body.imageURL
+    // build a sequelize Book model 
+    const book = models.Book.build({
+        ...req.body 
+    })
 
-    // create a JS object to represent a book 
-    const book = { title, genre, publisher, year, imageURL }
-    // generate and assign a unique id 
-    book.id = uuidv4()
-    // save the book in global books array 
-    global.books.push(book)
+    // save the book
+    book.save().then(savedBook => {
+      res.json(savedBook)  
+    }).catch((error) => {
+        res.json(error)
+    })
 
-    res.json(book)
 })
 
 module.exports = router 
