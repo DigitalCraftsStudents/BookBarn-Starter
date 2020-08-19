@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import './AddNewBook.css'
+import { connect } from 'react-redux'
 
 function AddNewBook(props) {
 
@@ -18,6 +19,8 @@ function AddNewBook(props) {
     }
 
     const saveBook = async () => {
+
+        book.userId = props.userId 
 
         const response = await fetch('http://localhost:3001/api/books',{
             method: 'POST', 
@@ -53,4 +56,10 @@ function AddNewBook(props) {
 
 }
 
-export default AddNewBook 
+const mapStateToProps = (state) => {
+    return {
+        userId: state.userId 
+    }
+}
+
+export default connect(mapStateToProps)(AddNewBook)

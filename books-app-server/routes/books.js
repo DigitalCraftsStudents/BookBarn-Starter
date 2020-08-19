@@ -62,7 +62,8 @@ router.post('/', (req, res) => {
 
     // build a sequelize Book model 
     const book = models.Book.build({
-        ...req.body 
+        ...req.body, 
+        user_id: parseInt(req.body.userId) 
     })
 
     // save the book
