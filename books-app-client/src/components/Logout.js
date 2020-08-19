@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import * as actionCreators from '../store/creators/actionCreators'
 
 function Logout(props) {
 
@@ -15,7 +16,7 @@ function Logout(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLoggedOut: () => dispatch({type: 'ON_LOGGED_OUT'})
+        onLoggedOut: () => dispatch(actionCreators.logout())
     }
 }
 

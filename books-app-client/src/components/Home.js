@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
+import * as actionCreators from '../store/creators/actionCreators'
 
 // this component displays all the books added to the catalog 
 function Home(props) {
@@ -61,7 +62,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onBookAddedToCart: (book) => dispatch({type: 'ON_BOOK_ADDED_TO_CART', payload: book})
+        onBookAddedToCart: (book) => dispatch(actionCreators.addBookToCart(book))
     }
 }
 

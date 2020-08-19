@@ -19,12 +19,10 @@ or ``` node app.js ```
 
 ### Solution for the following features: 
 
- 1. Add the ability for the user to add books to their cart. The items count should be stored in Redux global state  
+- Add the capability to allow the user to add books to the cart. The items in the cart will be maintained in the Redux global state.
 
-2. User should be able to see the cart count in all of the pages. Display the cart count on the upper right hand corner of the page 
+- Create 2 reducers. One reducer will manage authentication state and the other will manage books. 
 
-3. Allow the user to register for a new account 
+- Create action types and update your reducer(s) to use switch statement instead of if-else
 
-4. Allow the user to login. After successful login, update the isAuthenticated global state to true. 
-
-5. Toggle the menu options depending on the user logged in status. The isAuthenticated flag can be stored in Redux global state. 
+- Create action creators to replace your dispatch action arguments in React components.

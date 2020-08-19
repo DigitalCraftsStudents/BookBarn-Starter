@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
+import * as actionCreators from '../store/creators/actionCreators'
 
 function Login(props) {
 
@@ -52,7 +53,7 @@ function Login(props) {
 
 const mapDispatchToProps =  (dispatch) => {
     return {
-        onAuthenticated: (userId) => dispatch({type: 'ON_AUTHENTICATED', payload: {userId: userId, authenticated: true}})
+        onAuthenticated: (userId) => dispatch(actionCreators.setAuthenticationStatus(userId,true))
     }
 }
 
