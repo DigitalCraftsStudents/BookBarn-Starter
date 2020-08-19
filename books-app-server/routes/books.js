@@ -74,4 +74,25 @@ router.post('/', (req, res) => {
 
 })
 
+// get books by user id 
+router.get('/users/:userId',(req,res) => {
+
+    const userId = req.params.userId 
+    
+    if (!userId) {
+        res.json('userId is required')
+        return
+    }
+
+    models.Book.findAll({
+        where: {
+            user_id: userId
+        }
+    }).then((books) => {
+        res.json(books)
+    }).catch((error) => {
+        res.json(error)
+    })
+})
+
 module.exports = router 

@@ -1,27 +1,26 @@
 
 import React, {useState, useEffect} from 'react'
 import './MyBooks.css';
+import { connect } from 'react-redux'
 
-function MyBooks() {
+function MyBooks(props) {
 
     const [books, setBooks] = useState([])
 
     useEffect(() => {
-        
         // get the books and then set to the local state 
         populateBooks() 
-
     },[])
 
     const populateBooks = () => {
-        getAllBooks().then(books => setBooks(books))
+        getMyBooks().then(books => setBooks(books))
     }
 
-    const getAllBooks = async () => {
-        let response = await fetch('http://localhost:3001/api/books') 
-        return response.json()
+    const getMyBooks = async () => {
+        let response = await fetch(`http://localhost:3001/api/books/users/${props.userId}`)
+        return response.json() 
     }
-
+    
     const deleteBookById = async (bookId) => {
         let response = await fetch(`http://localhost:3001/api/books/${bookId}`,{
         method: 'DELETE',    
@@ -62,4 +61,10 @@ function MyBooks() {
 
 }
 
-export default MyBooks 
+const mapStateToProps = (state) => {
+    return {
+        userId: state.userId 
+    }
+}
+
+export default connect(mapStateToProps)(MyBooks)

@@ -18,7 +18,7 @@ router.post('/login',(req,res) => {
             // check the password 
             const isPasswordValid = bcrypt.compareSync(password, user.password)
             if(isPasswordValid) {
-                res.json({success: true})
+                res.json({success: true, userId: user.id})
             } else {
                 res.json({success: false, message: 'Invalid credentials'})
             }

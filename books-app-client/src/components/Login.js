@@ -27,7 +27,7 @@ function Login(props) {
             console.log(result)
             if(result.success) {
                 // updat the redux state isAuthenticated = true 
-                props.onAuthenticated() 
+                props.onAuthenticated(result.userId) 
                 // take the user to the login page
                 props.history.push('/my-books')
             } else {
@@ -52,7 +52,7 @@ function Login(props) {
 
 const mapDispatchToProps =  (dispatch) => {
     return {
-        onAuthenticated: () => dispatch({type: 'ON_AUTHENTICATED'})
+        onAuthenticated: (userId) => dispatch({type: 'ON_AUTHENTICATED', payload: {userId: userId, authenticated: true}})
     }
 }
 

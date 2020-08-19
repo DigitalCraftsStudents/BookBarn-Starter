@@ -1,7 +1,8 @@
 
 const initialState = {
-    isAuthenticated: true, 
-    cartItems: []
+    isAuthenticated: false, 
+    cartItems: [], 
+    userId: null 
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,7 +11,8 @@ const reducer = (state = initialState, action) => {
         case 'ON_AUTHENTICATED': 
             return {
                 ...state, 
-                isAuthenticated: true 
+                isAuthenticated: action.payload.authenticated, 
+                userId: action.payload.userId
             }
         case 'ON_LOGGED_OUT':
             return {
