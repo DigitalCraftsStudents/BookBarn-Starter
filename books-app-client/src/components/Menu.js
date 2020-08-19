@@ -23,8 +23,8 @@ function Menu(props) {
   
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.isAuthenticated, 
-        cartItems: state.cartItems 
+        isAuth: state.authReducer.isAuthenticated, 
+        cartItems: state.bookReducer.cartItems 
     }
 }
 

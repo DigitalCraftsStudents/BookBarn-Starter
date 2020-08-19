@@ -63,7 +63,7 @@ function MyBooks(props) {
 
 const mapStateToProps = (state) => {
     return {
-        userId: state.userId 
+        userId: state.authReducer.userId 
     }
 }
 

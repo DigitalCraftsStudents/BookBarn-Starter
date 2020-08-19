@@ -8,13 +8,19 @@ import AddNewBook from './components/AddNewBook';
 import Register from './components/Register'
 import Login from './components/Login'
 import MyBooks from './components/MyBooks';
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './store/reducer'
 import Logout from './components/Logout';
 import Home from './components/Home';
+import authenticationReducer from './store/reducers/authentication'
+import booksReducer from './store/reducers/books'
 
-const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const rootReducer = combineReducers({
+    authReducer: authenticationReducer, 
+    bookReducer: booksReducer 
+})
+
+const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <React.StrictMode>

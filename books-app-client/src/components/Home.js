@@ -55,7 +55,7 @@ function Home(props) {
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.isAuthenticated 
+        isAuth: state.authReducer.isAuthenticated 
     }
 }
 
