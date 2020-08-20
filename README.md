@@ -1,6 +1,6 @@
 # Book Barn Authentication Using JSON Web Tokens (JWT)
 
-![alt text]("/images/book-barn.png")
+![Book Barn Screenshot](book-barn.png)
 
 In this assignment, you will continue to work on your Book Barn project. Currently, your app does not have any authentication. You will use JSON Web Token (JWT) to protect the server side resources.
 
