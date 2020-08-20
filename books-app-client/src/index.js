@@ -15,6 +15,7 @@ import Home from './components/Home';
 import authenticationReducer from './store/reducers/authentication'
 import booksReducer from './store/reducers/books'
 import { setDefaultHeaders } from './authentication/defaultHeaders';
+import requireAuth from './components/requireAuth';
 
 const rootReducer = combineReducers({
     authReducer: authenticationReducer, 
@@ -38,7 +39,7 @@ ReactDOM.render(
             <Route path='/register' component={Register} exact />
             <Route path='/login' component={Login} exact />
             <Route path='/add-book' component={AddNewBook} exact />
-            <Route path='/my-books' component={MyBooks} exact />
+            <Route path='/my-books' component={requireAuth(MyBooks)} exact />
             <Route path='/logout' component={Logout} exact />
           </BaseLayout>
         </Switch>
