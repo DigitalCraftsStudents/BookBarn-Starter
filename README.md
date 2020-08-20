@@ -1,5 +1,7 @@
 ### Book Barn (Protecting Client Side Routes) 
 
+![Book Barn Screenshot](book-barn.png)
+
  In this assignment, you will continue to work on your Book Barn project. Currently, your app does not protect client side routes. This means a user can simply change the url and visit a different screen of the app. You will use React higher order components to implement client side routes for your app. 
 
 **New features are in bold** 
