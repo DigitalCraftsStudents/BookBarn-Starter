@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router() 
 const bcrypt = require('bcryptjs');
 const models = require('../models')
+const jwt = require('jsonwebtoken')
 
 router.post('/login',(req,res) => {
 
@@ -17,8 +18,11 @@ router.post('/login',(req,res) => {
         if(user) {
             // check the password 
             const isPasswordValid = bcrypt.compareSync(password, user.password)
+            console.log(isPasswordValid)
             if(isPasswordValid) {
-                res.json({success: true, userId: user.id})
+                // create the token 
+                const token = jwt.sign({userId: user.id},process.env.JWT_SECRET_KEY)
+                res.json({token: token, userId: user.id, success: true})
             } else {
                 res.json({success: false, message: 'Invalid credentials'})
             }

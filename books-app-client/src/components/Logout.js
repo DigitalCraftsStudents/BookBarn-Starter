@@ -2,11 +2,16 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../store/creators/actionCreators'
+import { setDefaultHeaders } from '../authentication/defaultHeaders'
 
 function Logout(props) {
 
     useEffect(() => {
         props.onLoggedOut() 
+        // remove the key from local storage 
+        localStorage.removeItem("jsonwebtoken")
+        // remove the authorization headers 
+        setDefaultHeaders(null)
     },[])
 
     return (

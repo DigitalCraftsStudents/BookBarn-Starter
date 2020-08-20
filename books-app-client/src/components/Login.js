@@ -2,6 +2,7 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../store/creators/actionCreators'
+import {setDefaultHeaders} from '../authentication/defaultHeaders'
 
 function Login(props) {
 
@@ -27,8 +28,12 @@ function Login(props) {
         .then(result => {
             console.log(result)
             if(result.success) {
-                // updat the redux state isAuthenticated = true 
+                // update the redux state isAuthenticated = true 
                 props.onAuthenticated(result.userId) 
+                // add the key to the local storage 
+                localStorage.setItem("jsonwebtoken",result.token)
+                // set authentication header for axios 
+                setDefaultHeaders(result.token)
                 // take the user to the login page
                 props.history.push('/my-books')
             } else {

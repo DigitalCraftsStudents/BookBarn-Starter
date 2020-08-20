@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import './MyBooks.css';
 import { connect } from 'react-redux'
+import { getDefaultHeaders } from '../authentication/defaultHeaders';
 
 function MyBooks(props) {
 
@@ -17,17 +18,21 @@ function MyBooks(props) {
     }
 
     const getMyBooks = async () => {
-        let response = await fetch(`http://localhost:3001/api/books/users/${props.userId}`)
+
+        console.log(getDefaultHeaders())
+
+        let response = await fetch(`http://localhost:3001/api/books/users/${props.userId}`, getDefaultHeaders())
         return response.json() 
     }
     
     const deleteBookById = async (bookId) => {
-        let response = await fetch(`http://localhost:3001/api/books/${bookId}`,{
-        method: 'DELETE',    
-        headers: {
-            'Content-Type': 'application/json'
-            }
+
+        let response = await fetch(`http://localhost:3001/api/books/${bookId}`,
+        {
+            method: 'DELETE', 
+            headers: getDefaultHeaders()
         })
+        
         return response.json() 
     }
 

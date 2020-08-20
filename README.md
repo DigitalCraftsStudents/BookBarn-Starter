@@ -1,28 +1,49 @@
-# BookBarn-Starter
+# Book Barn Authentication Using JSON Web Tokens (JWT)
 
-![Book Barn Screenshot](https://github.com/DigitalCraftsStudents/BookBarn-Starter/blob/master/book-barn.png)
+![alt text]("/images/book-barn.png")
 
-### Setup 
+In this assignment, you will continue to work on your Book Barn project. Currently, your app does not have any authentication. You will use JSON Web Token (JWT) to protect the server side resources.
 
-1. Download or clone the project 
-2. Go to the **books-app-server** folder and run ```npm install``` 
-3. Go to the **books-app-client** folder and run ```npm install``` 
+**New features are in bold** 
 
-### Running 
-1. Go to the **books-app-server** folder and run
-```nodemon app.js ```
-or ``` node app.js ```
-2. Go to the **books-app-client** folder and run ```npm start```
+- Allow the user to add new books 
 
-### Notes 
-1. This app uses ```"sequelize": "^5.22.3"``` 
+- Allow the user to view all books 
 
-### Solution for the following features: 
+- Allow the user to delete books 
 
-- Add the capability to allow the user to add books to the cart. The items in the cart will be maintained in the Redux global state.
+- Allow the user to update books 
 
-- Create 2 reducers. One reducer will manage authentication state and the other will manage books. 
+- Create separate pages for adding, viewing the books using React Router 
 
-- Create action types and update your reducer(s) to use switch statement instead of if-else
+- Allow the user to filter books based on the genre
 
-- Create action creators to replace your dispatch action arguments in React components.
+- Add the ability for the user to add books to their cart. The items count should be stored in Redux Global State
+
+- User should be able to see the cart count in all of the pages. Display the cart count on the upper right hand corner of the page 
+
+- Allow the user to register for a new account 
+
+- Allow the user to login. After successful login, update the isAuthenticated global state to true. 
+
+- Toggle the menu options depending on the user logged in status. The isAuthenticated flag can be stored in Redux global state. 
+
+- Create multiple users managing isAuthenticated, cartCount and favorite books (3 reducers in total) 
+
+- Create action types and update your reducer(s) to use switch statement instead of if-else 
+
+- Create action creators to replace your dispatch action arguments in React components. 
+
+- Take a look at your React components and see if you can update them to be be functional components. 
+
+![JWT Flow Diagram](jwt-flow.png)
+
+- **Allow the user to add username and password to register for the website.** 
+
+- **Add JSONWebToken authentication to the website** 
+
+- **Protect the server resource /my-books. You can only get to my books if you are authenticated.** 
+
+- **Add the ability to logout the user** 
+
+- **Deploy the website and the server separately**

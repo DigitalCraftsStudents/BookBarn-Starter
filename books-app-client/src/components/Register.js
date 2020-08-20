@@ -20,7 +20,7 @@ function Register(props) {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
-            }, 
+            },
             body: JSON.stringify(registrationInfo)
         }).then(response => response.json())
         .then(result => {

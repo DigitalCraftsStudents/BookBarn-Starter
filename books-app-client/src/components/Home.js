@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../store/creators/actionCreators'
+import { getDefaultHeaders } from '../authentication/defaultHeaders'
 
 // this component displays all the books added to the catalog 
 function Home(props) {
@@ -20,18 +21,8 @@ function Home(props) {
     }
 
     const getAllBooks = async () => {
-        let response = await fetch('http://localhost:3001/api/books') 
+        let response = await fetch('http://localhost:3001/api/books', getDefaultHeaders()) 
         return response.json()
-    }
-
-    const deleteBookById = async (bookId) => {
-        let response = await fetch(`http://localhost:3001/api/books/${bookId}`,{
-        method: 'DELETE',    
-        headers: {
-            'Content-Type': 'application/json'
-            }
-        })
-        return response.json() 
     }
 
     const handleAddToCart = (book) => {

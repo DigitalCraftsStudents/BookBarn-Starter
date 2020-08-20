@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import './AddNewBook.css'
 import { connect } from 'react-redux'
+import { getDefaultHeaders } from '../authentication/defaultHeaders'
 
 function AddNewBook(props) {
 
@@ -24,9 +25,7 @@ function AddNewBook(props) {
 
         const response = await fetch('http://localhost:3001/api/books',{
             method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json'
-            }, 
+            headers: getDefaultHeaders(), 
             body: JSON.stringify(book)
         })
 

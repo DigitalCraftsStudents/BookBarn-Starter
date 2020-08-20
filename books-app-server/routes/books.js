@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const models = require('../models')
+const authenticate = require('../middlewares/authenticationMiddleware')
 
 // GET api/books
 router.get('/', (req, res) => {
@@ -76,7 +77,7 @@ router.post('/', (req, res) => {
 })
 
 // get books by user id 
-router.get('/users/:userId',(req,res) => {
+router.get('/users/:userId',authenticate,(req,res) => {
 
     const userId = req.params.userId 
     

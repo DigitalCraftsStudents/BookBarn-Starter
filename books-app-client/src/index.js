@@ -14,11 +14,17 @@ import Logout from './components/Logout';
 import Home from './components/Home';
 import authenticationReducer from './store/reducers/authentication'
 import booksReducer from './store/reducers/books'
+import { setDefaultHeaders } from './authentication/defaultHeaders';
 
 const rootReducer = combineReducers({
     authReducer: authenticationReducer, 
     bookReducer: booksReducer 
 })
+
+// set the authentication header if present 
+let token = localStorage.getItem('jsonwebtoken')
+console.log(token)
+setDefaultHeaders(token)
 
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
