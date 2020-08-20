@@ -7,9 +7,7 @@ export default function (ComposedComponent) {
     class Authenticate extends Component {
 
         componentWillMount() {
-            console.log('this.props')
-            console.log(this.props)
-            console.log('componentWillMount')
+    
             if (!this.props.isAuthenticated) {
                 // take the user to login screen 
                 this.props.history.push('/login')
